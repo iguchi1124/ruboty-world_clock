@@ -2,7 +2,9 @@ module Ruboty
   module Actions
     class WorldClock < Base
       def call
-        message.reply(Time.now.in_time_zone(timezone).strftime('%m/%d %H:%M:%S'))
+        if timezone.present?
+          message.reply(Time.now.in_time_zone(timezone).strftime('%m/%d %H:%M:%S'))
+        end
       end
 
       private
