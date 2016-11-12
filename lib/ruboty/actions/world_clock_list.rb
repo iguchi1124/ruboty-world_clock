@@ -2,13 +2,11 @@ module Ruboty
   module Actions
     class WorldClockList < Base
       def call
-        message.reply(
-          <<-EOM
-```
-#{timezones.join("\n")}
-```
-          EOM
-        )
+        if timezones.present?
+          message.reply("```\n#{timezones.join("\n")}\n```")
+        else
+          message.reply('Not found timezones.')
+        end
       end
 
       private
