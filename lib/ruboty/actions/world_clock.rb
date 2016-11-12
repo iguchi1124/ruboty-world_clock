@@ -3,9 +3,9 @@ module Ruboty
     class WorldClock < Base
       def call
         if timezone.present?
-          message.reply(Time.now.in_time_zone(timezone).strftime('%m/%d %H:%M:%S'))
+          message.reply(Time.now.in_time_zone(timezone).strftime('%Y-%m-%d %H:%M:%S'))
         else
-          message.reply("Not found the timezone: #{message[:zone]}")
+          message.reply("Not found the timezone: \"#{message[:zone]}\".")
         end
       end
 
